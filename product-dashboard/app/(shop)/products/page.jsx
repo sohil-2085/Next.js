@@ -33,7 +33,11 @@ const productPage = async ({ searchParams }) => {
         <h2>{price}</h2> */}
         <div className="grid grid-cols-2 gap-8">
           {products.map((product) => (
-            <Link href={`products/${product.id}`} key={product.id} className="flex flex-col gap-4">
+            <Link
+              href={`/products/${product.id}`}
+              key={product.id}
+              className="flex flex-col gap-4"
+            >
               <Image
                 src={product.image}
                 alt="product"

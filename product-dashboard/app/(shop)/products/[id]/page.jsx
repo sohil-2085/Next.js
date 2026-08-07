@@ -1,18 +1,42 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 async function getIndProducts(id) {
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+
+  if (!res.ok) {
+    return null;
+  }
+
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-    return res.json();
-  } catch (error) {
-    throw new Error(`Failed to fetch ${id} product`, error);
+    const product = await res.json();
+
+    if (!product || Object.keys(product).length === 0) {
+      return null;
+    }
+
+    return product;
+  } catch {
+    return null;
   }
 }
 
-const productIdPage = async (props) => {
-  const product = await props.params;
-  const indProduct = await getIndProducts(product.id);
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const product = await getIndProducts(id);
+  return {
+    title: product?.title ?? "Product Not Found",
+  };
+}
+
+const productIdPage = async ({ params }) => {
+  const { id } = await params;
+  const indProduct = await getIndProducts(id);
+
+  if (!indProduct) {
+    notFound();
+  }
 
   return (
     <>

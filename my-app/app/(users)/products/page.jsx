@@ -1,4 +1,5 @@
 import React from "react";
+import ProductList from "./ProductList";
 
 const products = async ({ searchParams }) => {
   const searchParam = await searchParams;
@@ -8,9 +9,10 @@ const products = async ({ searchParams }) => {
   const page = searchParam?.page || 1;
   console.log(searchParam)
   return (
-    <h1>
+    <div>
+      <ProductList />
       {category}, {sort}, {page}
-    </h1>
+    </div>
   );
 };
 

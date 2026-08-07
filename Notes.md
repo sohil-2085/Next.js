@@ -75,12 +75,35 @@ export const metadata = {
 
 - if we warp that folder with the square brackate like this then it becomes the dynamic segements ([folder_name])
 - Now How to use Dynamic Route segements in the server component
-  - first why we use them this is the most important 
-  - we use this because we know if we click on the any post of the insta and other social media then it opens and when it opens also url of that post is changed in the browser and for that we use the dynamic routes 
-  - now as we know that in next js whenever we create new folder it creates the routes and as for this post scenario we are not going to create the folders for all users so we follow this structure like first we create 
-  - users folder inside that we create this dynamic route folder with name [username] and in this folder we creates the page.tsx and this is working dynamically if we are passsing the props as arguments this props has promises and other information like params and search params with the use of that we can build the dynamic page you can see that in the folders 
+  - first why we use them this is the most important
+  - we use this because we know if we click on the any post of the insta and other social media then it opens and when it opens also url of that post is changed in the browser and for that we use the dynamic routes
+  - now as we know that in next js whenever we create new folder it creates the routes and as for this post scenario we are not going to create the folders for all users so we follow this structure like first we create
+  - users folder inside that we create this dynamic route folder with name [username] and in this folder we creates the page.tsx and this is working dynamically if we are passsing the props as arguments this props has promises and other information like params and search params with the use of that we can build the dynamic page you can see that in the folders
 
 # Search Params
 
-- in this we can get the data like which filter we applyand all like this 
+- in this we can get the data like which filter we applyand all like this
 - http://localhost:3000/products?productId=10
+- this is on the server side reading the queries from the url and perform the oprations mention in the query
+
+# Use Search Params
+
+- this works in the client side to take the queries from the url to perform the functions or whatever mentions
+
+# Catch all segment in next.js
+
+- we are writing our dynamic routing like this [route_name]
+- now if we write like this [...slug] then it becomes the catch-all segments
+- when you want to handle dynamic nested routes without having to manually define each level of the path
+- here this [...slug] this 3 dots combine the routes like this
+- /blog
+- /blog/technology
+- /blog/technology/javascript
+- insted of creating separate [category]/[subcategory]/page.js , you can
+  app/blog/[...slug]/page.js
+- example : E-commerece Product Catalog
+  Path Example : /shop/clothing/men/shirts
+  Use Case :
+  User can filter or browse products through multiple nested categories
+  File : app/shop/[...slug]/page.js
+- we can handle dynamic route segments withour defining the each folders 
