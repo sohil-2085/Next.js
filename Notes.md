@@ -106,4 +106,6 @@ export const metadata = {
   Use Case :
   User can filter or browse products through multiple nested categories
   File : app/shop/[...slug]/page.js
-- we can handle dynamic route segments withour defining the each folders 
+- we can handle dynamic route segments without defining the each folders 
+- use it when the depth of the url is not known 
+
